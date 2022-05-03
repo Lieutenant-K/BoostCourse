@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Album
 //
-//  Created by 김윤수 on 2022/05/04.
+//  Created by 김윤수 on 2022/01/13.
 //
 
 import UIKit
@@ -16,7 +16,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        guard let scene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(frame: scene.coordinateSpace.bounds)
+        window?.windowScene = scene
+        
+        let root = ViewController()
+        let navi = UINavigationController(rootViewController: root)
+        
+        navi.navigationBar.prefersLargeTitles = true
+        navi.navigationBar.isTranslucent = true
+        
+        let appearance = UINavigationBarAppearance()
+//        appearance.configureWithTransparentBackground()
+        
+        navi.navigationBar.scrollEdgeAppearance = appearance
+        navi.navigationBar.standardAppearance = appearance
+
+        window?.rootViewController = navi
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
