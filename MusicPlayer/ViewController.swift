@@ -271,6 +271,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         self.addViewWithCode()
         self.initializePlayer()
+        print("서브트리 테스트")
         // Do any additional setup after loading the view.
     }
     
